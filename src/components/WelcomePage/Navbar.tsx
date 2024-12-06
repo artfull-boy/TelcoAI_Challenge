@@ -10,7 +10,7 @@ function Navbar() {
             <IconCard Icon={Bell} />
             <IconCard Icon={Languages} />
             <IconCard Icon={LifeBuoy} />
-            <div className="pl-[14px] flex gap-[6px] items-center">
+            <div className="pl-[14px] flex gap-[6px] items-center cursor-pointer">
                 <div className="size-[36px] bg-[#DCFEDA] rounded-[50%] flex items-center justify-center relative">
                     <p className="text-[12px] font-[600] leading-[11px] tracking-[-0.1px] text-center text-blue">
                         MK
