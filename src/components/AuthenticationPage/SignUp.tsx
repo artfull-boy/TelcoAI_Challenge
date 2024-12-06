@@ -27,13 +27,16 @@ function SignUp() {
             Continue with Google using your professional account
           </p>
           <Link href={"/welcome"}>
-            <button className="w-full text-white font-[500] leading-[19.63px] text-[16px] text-center bg-blue py-[16px] px-[28px] rounded-[8px] flex gap-[12px] justify-center items-center hover:bg-[#0E17C5] transition-all duration-500 ease">
-              <Image
-                src={"/assets/images/AuthenticationPage/googleLogo.svg"}
-                width={18}
-                height={18}
-                alt="logo google"
-              />
+            <button className="w-full text-white font-[500] leading-[19.63px] text-[16px] text-center bg-blue py-[16px] px-[28px] rounded-[8px] flex gap-[12px] justify-center items-center hover:bg-[#0E17C5] transition-all duration-500 ease group">
+              <div className="flex items-center justify-center w-[28px] h-[18px]">
+                <Image
+                  src={"/assets/images/AuthenticationPage/googleLogo.svg"}
+                  width={18}
+                  height={18}
+                  className="group-hover:w-[28px] transition-all duration-500 ease"
+                  alt="logo google"
+                />
+              </div>
               Sign in with Google
             </button>
           </Link>

@@ -9,8 +9,8 @@ function Hero() {
                 <p className="text-textcolor text-[20px] text-center leading-[26px] tracking-[-1px]">Choose an AI Module to Begin</p>
         </div>
         <div className="flex gap-[32px] w-full">
-            <OptionCard title={"Power AI"} subtitle={"AI-driven solutions for managing power demand and optimizing energy use."} Icon={BrainCircuit}/>
-            <OptionCard title={"TelcoAI"} subtitle={"AI insights to optimize telecom network performance and customer experience."} Icon={RadioTower}/>
+            <OptionCard title={"TelcoAI"} subtitle={"AI insights to optimize telecom network performance and customer experience."} Icon={RadioTower} link={"#"}/>
+            <OptionCard title={"Power AI"} subtitle={"AI-driven solutions for managing power demand and optimizing energy use."} Icon={BrainCircuit} link={"/powerDemand"}/>
         </div>
     </div>
   )
