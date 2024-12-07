@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   BadgeCheck,
@@ -6,14 +6,11 @@ import {
   ChevronsUpDown,
   CreditCard,
   LogOut,
+  LucideIcon,
   Sparkles,
-} from "lucide-react"
+} from "lucide-react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,93 +19,64 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 export function NavUser({
-  user,
+  items,
 }: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
+  items: {
+    title: string;
+    url: string;
+    icon: LucideIcon;
+  };
 }) {
-  const { isMobile } = useSidebar()
 
   return (
-    <SidebarMenu>
-      <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+    <SidebarGroup className="w-[100%] p-0 flex flex-col gap-[8px]">
+      <SidebarGroupLabel className="text-[12px] font-[500] text-[#94A3B8]">Settings</SidebarGroupLabel>
+      <SidebarGroupContent className="w-[100%] ml-0">
+      <SidebarMenu className="w-[100%] ml-0">
+      {items.map((item) => {
+        return (
+          <SidebarMenuItem key={item.title} className="w-full ml-0">
             <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              tooltip={item.title}
+              className={`p-[8px] flex gap-[8px] justify-start items-center hover:bg-[#F8FAFC] transition-all duration-500 w-[100%] bg-white
+            `}
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
-            align="end"
-            sideOffset={4}
-          >
-            <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+              {item.icon && (
+                <div
+                  className={`p-[4px] rounded-[5px] 
+                  bg-[#F1F5F9]
+                }`}
+                >
+                  <item.icon
+                    width={16}
+                    height={16}
+                    strokeWidth={1.5}
+                    className={`text-textcolor`}
+                  />
                 </div>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
-              Log out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarMenuItem>
-    </SidebarMenu>
-  )
+              )}
+              <span className="text-textcolor text-[12px] font-[500]">
+                {item.title}
+              </span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        );
+      })}
+      </SidebarMenu>
+      </SidebarGroupContent>
+      
+    </SidebarGroup>
+  );
 }
