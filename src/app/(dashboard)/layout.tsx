@@ -1,4 +1,5 @@
-import { AppSidebar } from "@/components/Dashboard/app-sidebar"
+"use client";
+import { AppSidebar } from "@/components/Dashboard/app-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,34 +7,46 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/breadcrumb";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { ChevronRight } from "lucide-react";
+import Navbar from "@/components/Dashboard/Navbar";
 
 export default function Page() {
+  const [open, setOpen] = useState(true);
+  const pathname = usePathname();
   return (
-    <SidebarProvider>
-      <AppSidebar />
+    <SidebarProvider defaultOpen={true} open={open}>
+      <AppSidebar isOpen={open} setOpen={setOpen} />
       <SidebarInset>
+        <Navbar title={pathname.includes("powerDemand") ? "Power & Energy" : "Power demand prediction"} />
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
+                  <BreadcrumbLink href="/powerDemand" className={`font-[500] ${pathname.includes("powerGeneration") ? "text-blue underline" : ""}`}>
+                    Power demand prediction
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
+
+                {pathname.includes("powerGeneration") && (
+                  <>
+                    <BreadcrumbSeparator className="hidden md:block">
+                      <ChevronRight size={8} color="#94A3B8" />
+                    </BreadcrumbSeparator>
+                    <BreadcrumbItem>
+                      <BreadcrumbPage className="font-[500]">
+                        Power Generation Segregation
+                      </BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </>
+                )}
               </BreadcrumbList>
             </Breadcrumb>
           </div>
@@ -48,5 +61,5 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
