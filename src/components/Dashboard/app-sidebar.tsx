@@ -1,176 +1,94 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
+  ChevronLeft,
+  CircleDollarSign,
+  CircleUser,
+  Leaf,
   TrendingUpDown,
-} from "lucide-react"
+  Users,
+} from "lucide-react";
 
-import { NavMain } from "@/components/Dashboard/nav-main"
-import { NavProjects } from "@/components/Dashboard/nav-projects"
-import { NavUser } from "@/components/Dashboard/nav-user"
-import { TeamSwitcher } from "@/components/Dashboard/team-switcher"
+import { NavMain } from "@/components/Dashboard/nav-main";
+import { NavUser } from "@/components/Dashboard/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar"
-import Image from "next/image"
+} from "@/components/ui/sidebar";
+import Image from "next/image";
 
-// This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Power demand prediction",
-      url: "#",
+      url: "/powerDemand",
       icon: TrendingUpDown,
-      isActive: true,
       items: [
         {
           title: "Power Generation Segregation",
-          url: "#",
-        }
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
+          url: "/powerGeneration",
         },
       ],
     },
     {
-      title: "Documentation",
+      title: "Investment planning",
       url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+      icon: CircleDollarSign,
     },
     {
-      title: "Settings",
+      title: "Carbon emissions CO2",
       url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      icon: Leaf,
     },
   ],
-  projects: [
+  footerData: [
     {
-      name: "Design Engineering",
+      title: "Organization Settings",
       url: "#",
-      icon: Frame,
+      icon: Users,
     },
     {
-      name: "Sales & Marketing",
+      title: "Account",
       url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      icon: CircleUser,
     },
   ],
-}
+};
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  isOpen,
+  setOpen,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & {
+  isOpen: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="offcanvas" open={isOpen} {...props} className="px-[8px]">
       <SidebarHeader>
-        <Image src={"/assets/images/Dashboard/logo.png"} width={231} height={83} alt="logo" />
+        <Image
+          src={"/assets/images/Dashboard/logo.svg"}
+          width={231}
+          height={83}
+          alt="logo"
+        />
       </SidebarHeader>
       <SidebarContent>
-        <div className="bg-[#F8FAFCCC] py-[8px] px-[12px] rounded-[8px] flex gap-[8px]">
-          <Image src={"/assets/images/Dashboard/netis.png"} width={40} height={40} alt="logo netis" />
-          <div className="flex flex-col gap-[4px]">
-            <p className="text-[16px] leading-[14px] font-[600] tracking-[-0.4px] text-[#333]">NETIS Group</p>
-            <p className="text-[#333] text-[12px] leading-[14px]">Telecommunications</p>
-          </div>
-        </div>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
+      <SidebarFooter className="w-[100%] p-0 pb-[56px] flex flex-col gap-4">
+        <NavUser items={data.footerData} />
       </SidebarFooter>
-      <SidebarRail />
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="fixed bottom-6 left-[8px] size-[24px] bg-[#F8FAFC] rounded-[4px] p-[4px]"
+        aria-label="Close sidebar"
+      >
+        <ChevronLeft size={16} className={`duration-500 transition-transform ${isOpen == false ? "rotate-180 " : ""}`} />
+      </button>
     </Sidebar>
-  )
+  );
 }
