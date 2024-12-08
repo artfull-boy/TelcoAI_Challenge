@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TelcoAI Challenge: AI-Driven Power Optimization
 
-## Getting Started
+## Overview
+This project is an MVP developed for TelcoAI to optimize power usage across telecom sites using AI. It adheres to a pixel-perfect implementation of the provided Figma design and employs a modular, clean code approach. The solution utilizes Recharts for data visualization and shadcn/ui for consistent design, ensuring adherence to best practices.
 
-First, run the development server:
+## Technology Stack
+- **Framework**: Next.js with TypeScript
+- **Design System**: shadcn/ui
+- **Styling**: Tailwind CSS
+- **Visualization**: Recharts
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- Modular component architecture with clean code principles.
+- Task assessment with multiple interactive elements.
+- Optimized for screens with a resolution of 1440x900, as specified in the Figma file.
+- TypeScript for enhanced static type-checking and maintainability.
+- Recharts integration for data visualization.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup Instructions
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm (or yarn) package manager
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Steps to Run the Project
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/artfull-boy/TelcoAI_Challenge.git
+   cd telcoai
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to `http://localhost:3000` to view the application.
 
-To learn more about Next.js, take a look at the following resources:
+### Steps to Build the Project
+1. **Build the production version**:
+   ```bash
+   npm run build
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Serve the build locally**:
+   ```bash
+   npm run start
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development Approach
+- **Design Implementation**: Followed a pixel-perfect approach to match the Figma design.
+- **Modular Components**: Created reusable components where necessary. Some components are not reused, as their functionality was specific to a single use case.
+- **Responsive Design**: Focused on the target resolution of 1440x900 for consistency with design requirements.
+- **TypeScript Integration**: Used TypeScript for improved type safety and code maintainability.
 
-## Deploy on Vercel
+## Key Libraries and Tools
+- **Recharts**: Used for creating interactive and dynamic data visualizations.
+- **shadcn/ui**: Ensured consistent UI elements and adherence to the design system.
+- **Tailwind CSS**: Applied scalable and maintainable styles effectively.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Timeline
+I made this project in about 3days starting from 06/12/2024 to 08/12/2024.
+
+---
+
+Thank you for reviewing this project! If you have any questions or require further assistance, feel free to reach out.
