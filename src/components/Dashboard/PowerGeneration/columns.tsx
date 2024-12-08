@@ -5,7 +5,7 @@ import {Settings2 } from "lucide-react"
 
 export type Payment = {
   id: string
-  generatedOn: Date,
+  generatedOn: string,
   gridRun: number,
   gridFail: number,
   batteryRun: number,

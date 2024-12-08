@@ -8,7 +8,7 @@ function Charts() {
   const data = [
     {
       id: "payment-1",
-      generatedOn: new Date("03/17/2023"),
+      generatedOn: "03/17/2023",
       gridRun: 32.74,
       gridFail: 2.45,
       batteryRun: 14.38,
@@ -20,7 +20,7 @@ function Charts() {
     },
     {
       id: "payment-2",
-      generatedOn: new Date("08/12/2023"),
+      generatedOn: "08/12/2023",
       gridRun: 40.82,
       gridFail: 1.76,
       batteryRun: 18.24,
@@ -32,7 +32,7 @@ function Charts() {
     },
     {
       id: "payment-3",
-      generatedOn: new Date("01/23/2023"),
+      generatedOn: "01/23/2023",
       gridRun: 28.16,
       gridFail: 3.58,
       batteryRun: 10.95,
@@ -44,7 +44,7 @@ function Charts() {
     },
     {
       id: "payment-4",
-      generatedOn: new Date("06/10/2023"),
+      generatedOn: "06/10/2023",
       gridRun: 25.56,
       gridFail: 4.62,
       batteryRun: 12.87,
@@ -56,7 +56,7 @@ function Charts() {
     },
     {
       id: "payment-5",
-      generatedOn: new Date("11/05/2023"),
+      generatedOn: "11/05/2023",
       gridRun: 33.89,
       gridFail: 2.03,
       batteryRun: 16.42,
@@ -68,7 +68,7 @@ function Charts() {
     },
     {
       id: "payment-6",
-      generatedOn: new Date("02/28/2023"),
+      generatedOn: "02/28/2023",
       gridRun: 30.25,
       gridFail: 3.17,
       batteryRun: 11.89,
@@ -80,7 +80,7 @@ function Charts() {
     },
     {
       id: "payment-7",
-      generatedOn: new Date("07/19/2023"),
+      generatedOn: "07/19/2023",
       gridRun: 38.75,
       gridFail: 1.98,
       batteryRun: 14.76,
