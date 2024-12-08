@@ -45,7 +45,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
       {items.map((item) => {
         const isActive = item.url === pathname;
 
-        return item.items?.length > 0 ? (
+        return item.items && item.items.length > 0 ? (
           <Collapsible
             key={item.title}
             asChild

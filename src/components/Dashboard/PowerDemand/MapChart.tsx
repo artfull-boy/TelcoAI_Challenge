@@ -54,7 +54,6 @@ function MapChart() {
               Energy/Power Range
             </p>
             <div className="flex gap-0">
-              {/* Legend Items */}
               {[
                 { color: "#DEEBF7", label: "Low" },
                 { color: "#C6DBEF", label: "Moderate-Low" },
@@ -75,7 +74,6 @@ function MapChart() {
               ))}
             </div>
           </div>
-          {/* Chart Container */}
           <div id="chartdiv" className="w-full h-full mt-[16px]"></div>
         </div>
       </div>

@@ -67,7 +67,7 @@ export function AppSidebar({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
-    <Sidebar collapsible="offcanvas" open={isOpen} {...props} className="px-[8px]">
+    <Sidebar collapsible="offcanvas" {...props} className="px-[8px]">
       <SidebarHeader>
         <Image
           src={"/assets/images/Dashboard/logo.svg"}

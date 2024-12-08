@@ -19,7 +19,7 @@ function Header({pathname}:HeaderProps) {
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
   return (
-    <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 overflow-hidden border-t-[1px] border-t-[#E2E8F0]">
+    <header className="flex h-16 w-full items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 overflow-hidden border-t-[1px] border-t-[#E2E8F0]">
           <div className="flex items-center gap-2 px-4 justify-between w-full">
             {!openSearchBar && (
               <Breadcrumb className="w-auto transition-all duration-500 ease-in-out">

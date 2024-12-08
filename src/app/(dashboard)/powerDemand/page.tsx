@@ -6,7 +6,7 @@ import MapChart from "@/components/Dashboard/PowerDemand/MapChart";
 
 function page() {
   return (
-    <div>
+    <div className="flex flex-col w-full">
           <KeyMetrics />
           <SelectTime />
           <Charts />

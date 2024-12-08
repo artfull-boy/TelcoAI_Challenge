@@ -9,7 +9,10 @@ import {
   YAxis,
   Legend,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 
 type ChartData = {
   date: string;
@@ -23,7 +26,11 @@ type LinearChartProps = {
   YAxisName: string;
 };
 
-const renderTick = ({ x, y, payload }: {
+const renderTick = ({
+  x,
+  y,
+  payload,
+}: {
   x: number;
   y: number;
   payload: { value: string };
@@ -43,89 +50,92 @@ const renderTick = ({ x, y, payload }: {
   );
 };
 
-export function LinearChart({title, chartData, YAxisName}: LinearChartProps) {
+export function LinearChart({ title, chartData, YAxisName }: LinearChartProps) {
   return (
-    <div className="relative bg-white p-4 rounded-[8px] flex-1">
-      <h2 className="text-[14px] font-[500] mb-2">{title}</h2>
-      <LineChart
-        data={chartData}
-        width={400}
-        height={285}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="date"
-          tickLine={false}
-          tick={renderTick}
-          interval={31}
-        />
-        <YAxis
-          tickFormatter={(value) => value.toFixed(0)}
-          label={{
-            value: YAxisName,
-            position: "top",
-            offset: 10,
-            style: { textAnchor: "middle", fontWeight: "normal" },
-          }}
-          className="text-[12px]"
-        />
-        <Legend
-          verticalAlign="top"
-          height={36}
-          content={({ payload }) => (
-            <ul className="flex justify-center items-center gap-3 text-[10px]">
-              {payload?.map((entry, index) => (
-                <li
-                  key={`item-${index}`}
-                  className="flex gap-2"
-                  style={{ color: entry.color }}
-                >
-                  <svg
-                    width="17"
-                    height="16"
-                    viewBox="0 0 17 16"
-                    xmlns="http://www.w3.org/2000/svg"
+    <Card className="flex flex-col flex-1 items-center justify-center h-[300px]">
+      <CardHeader className="flex w-full justify-start pb-0">
+        <CardTitle className="text-[14px] text-textcolor font-[500]">{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex-1 pb-0 w-full">
+        <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={chartData} height={293} className="w-full">
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="date"
+            tickLine={false}
+            tick={renderTick}
+            interval={31}
+          />
+          <YAxis
+            tickFormatter={(value) => value.toFixed(0)}
+            label={{
+              value: YAxisName,
+              position: "top",
+              offset: 10,
+              style: { textAnchor: "middle", fontWeight: "normal" },
+            }}
+            className="text-[12px]"
+          />
+          <Legend
+            verticalAlign="top"
+            height={36}
+            content={({ payload }) => (
+              <ul className="flex justify-center items-center gap-3 text-[10px]">
+                {payload?.map((entry, index) => (
+                  <li
+                    key={`item-${index}`}
+                    className="flex gap-2"
+                    style={{ color: entry.color }}
                   >
-                    <rect
-                      x="0.333374"
-                      y="7"
-                      width="16"
-                      height="2"
-                      fill="currentColor"
-                    />
-                    <rect
-                      x="4.83337"
-                      y="4.5"
-                      width="7"
-                      height="7"
-                      rx="3.5"
-                      fill="currentColor"
-                      stroke="white"
-                    />
-                  </svg>
+                    <svg
+                      width="17"
+                      height="16"
+                      viewBox="0 0 17 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.333374"
+                        y="7"
+                        width="16"
+                        height="2"
+                        fill="currentColor"
+                      />
+                      <rect
+                        x="4.83337"
+                        y="4.5"
+                        width="7"
+                        height="7"
+                        rx="3.5"
+                        fill="currentColor"
+                        stroke="white"
+                      />
+                    </svg>
 
-                  <span style={{ color: entry.color }}>{entry.value}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        />
+                    <span style={{ color: entry.color }}>{entry.value}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          />
 
-        <Line
-          type="monotone"
-          dataKey="Historical"
-          stroke="#3954FF"
-          dot={false}
-          strokeWidth={1}
-        />
-        <Line
-          type="monotone"
-          dataKey="Predicted"
-          stroke="#13AB0E"
-          dot={false}
-          strokeWidth={1}
-        />
-      </LineChart>
-    </div>
+          <Line
+            type="monotone"
+            dataKey="Historical"
+            stroke="#3954FF"
+            dot={false}
+            strokeWidth={1}
+          />
+          <Line
+            type="monotone"
+            dataKey="Predicted"
+            stroke="#13AB0E"
+            dot={false}
+            strokeWidth={1}
+          />
+        </LineChart>
+        </ResponsiveContainer>
+      </CardContent>
+    </Card>
+
   );
 }
