@@ -1,7 +1,17 @@
+"use client"
+import KeyMetrics from "@/components/Dashboard/PowerDemand/KeyMetrics";
+import SelectTime from "@/components/Dashboard/PowerDemand/SelectTime";
+import Charts from "@/components/Dashboard/PowerDemand/Charts";
+import MapChart from "@/components/Dashboard/PowerDemand/MapChart";
 
 function page() {
   return (
-    <div>page</div>
+    <div>
+          <KeyMetrics />
+          <SelectTime />
+          <Charts />
+          <MapChart />
+    </div>
   )
 }
 
