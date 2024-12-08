@@ -9,6 +9,7 @@ import Header from "@/components/Dashboard/Header";
 import KeyMetrics from "@/components/Dashboard/KeyMetrics";
 import SelectTime from "@/components/Dashboard/SelectTime";
 import Charts from "@/components/Dashboard/Charts";
+import MapChart from "@/components/Dashboard/MapChart";
 
 
 export default function Page() {
@@ -31,6 +32,7 @@ export default function Page() {
           <KeyMetrics />
           <SelectTime />
           <Charts />
+          <MapChart />
         </div>
       </SidebarInset>
     </SidebarProvider>
