@@ -1,18 +1,17 @@
 "use client";
 import { AppSidebar } from "@/components/Dashboard/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { useState } from "react";
+import { ReactInstance, ReactNode, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import Navbar from "@/components/Dashboard/Navbar";
 import Header from "@/components/Dashboard/Header";
-import KeyMetrics from "@/components/Dashboard/KeyMetrics";
-import SelectTime from "@/components/Dashboard/SelectTime";
-import Charts from "@/components/Dashboard/Charts";
-import MapChart from "@/components/Dashboard/MapChart";
 
+interface PageProps {
+  children: ReactNode;
+}
 
-export default function Page() {
+export default function Page({children}:PageProps) {
   const [open, setOpen] = useState(true);
   const pathname = usePathname();
 
@@ -29,10 +28,7 @@ export default function Page() {
         />
         <Header pathname={pathname} />
         <div className="flex flex-1 flex-col gap-4  pt-0">
-          <KeyMetrics />
-          <SelectTime />
-          <Charts />
-          <MapChart />
+          {children}
         </div>
       </SidebarInset>
     </SidebarProvider>
